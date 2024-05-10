@@ -1,22 +1,14 @@
-import { connect } from 'react-redux';
 import React from 'react';
 import ExpenseList from './ExpenseList';
 import ExpenseListFilters from './ExpenseListFilters';
-import ExpenseTotal from './ExpenseTotal';
-import AddExpenseModal from './AddExpenseModal';
-import AddExpenseButton from './AddExpenseButton';
-
+import ExpensesSummary from './ExpensesSummary';
 
 const ExpenseDashboardPage = () => (
-
   <div>
-
-    <AddExpenseButton/>
-    <AddExpenseModal/>
+    <ExpensesSummary />
     <ExpenseListFilters />
-    <ExpenseTotal />
     <ExpenseList />
   </div>
 );
 
-export default connect()(ExpenseDashboardPage);
+export default ExpenseDashboardPage;

@@ -1,5 +1,7 @@
-// Import the functions you need from the SDKs you need
-import * as firebase from 'firebase';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getDatabase, ref, set, onValue, update, remove, off, push, onChildRemoved, onChildChanged, onChildAdded, child, get } from "firebase/database"; //set(), remove(), update(), get() are promises so can you .then for successful result and .catch for failures/errors
+import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-Y8_9h7zBMjsdzYYde9mvbb-1uKpnCcE",
@@ -12,12 +14,12 @@ const firebaseConfig = {
   measurementId: "G-KKLVJM7T1N"
 };
 
-firebase.initializeApp(config);
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
-const database = firebase.database();
-const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-
-export { firebase, googleAuthProvider, database as default };
+export const db = getDatabase();
+export const googleAuthProvider = new GoogleAuthProvider();
 
 
 
