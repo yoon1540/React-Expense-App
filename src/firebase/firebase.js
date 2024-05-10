@@ -1,12 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getDatabase, push, ref, set } from "firebase/database";
+import * as firebase from 'firebase';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyA-Y8_9h7zBMjsdzYYde9mvbb-1uKpnCcE",
   authDomain: "expensify-61e15.firebaseapp.com",
@@ -18,42 +12,55 @@ const firebaseConfig = {
   measurementId: "G-KKLVJM7T1N"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const database = getDatabase(app);
+firebase.initializeApp(config);
 
-export {firebaseConfig, database as default};
+const database = firebase.database();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-
-
-set(ref(database, ), {
-    name: 'MAN Yoon',
-    age: 21,
-    isSingle: true,
-    location: {
-        city: 'Toronto',
-        country: 'Canada'
-    }
-}).then(() => {
-    console.log("Data is Saved");
-}).catch((e) => {
-    console.log('Failed: ', e);
-})
+export { firebase, googleAuthProvider, database as default };
 
 
 
+// set(ref(database, ), {
+//     name: 'MAN Yoon',
+//     age: 21,
+//     isSingle: true,
+//     location: {
+//         city: 'Toronto',
+//         country: 'Canada'
+//     }
+// }).then(() => {
+//     console.log("Data is Saved");
+// }).catch((e) => {
+//     console.log('Failed: ', e);
+// })
 
-push(ref(database), {
-    name: 'Darnell',
-    age: 26,
-    isSingle: true,
-    location: {
-        city: 'Toronto',
-        country: 'Canada'
-    }
-}).then(() => {
-    console.log("Data is Saved");
-}).catch((e) => {
-    console.log('Failed: ', e);
-})
+
+// push(ref(database), {
+//     name: 'Darnell',
+//     age: 26,
+//     isSingle: true,
+//     location: {
+//         city: 'Toronto',
+//         country: 'Canada'
+//     }
+// }).then(() => {
+//     console.log("Data is Saved");
+// }).catch((e) => {
+//     console.log('Failed: ', e);
+// })
+
+// // child_removed
+// database.ref('expenses').on('child_removed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
+
+// // child_changed
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
+
+// // child_added
+// database.ref('expenses').on('child_added', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
